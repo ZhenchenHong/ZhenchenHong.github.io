@@ -307,6 +307,19 @@
 </header>
 
     
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '1';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('Please enter the password to view the contents')).toString(CryptoJS.enc.Hex)) {
+                alert('Incorrect password, returning to the home page');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
 
 
 
