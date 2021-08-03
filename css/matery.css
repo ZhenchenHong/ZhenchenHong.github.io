@@ -554,7 +554,7 @@ header .go-back i {
 /*    -webkit-animation: rainbow 60s infinite;
     animation: grey 60s infinite;*/
     background-color: black;
-    opacity: 0.4;
+    opacity: 0.5;
 }
 
 .bg-cover:before,
