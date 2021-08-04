@@ -310,7 +310,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'c3ea5c2a0cf5e8b0627dfff5f79a702f34d8b5d946d18d0b39ac7ebfdd83caee';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('Please enter the password to view the contents')).toString(CryptoJS.enc.Hex)) {
                 alert('Incorrect password, returning to the home page');
