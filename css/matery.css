@@ -101,8 +101,8 @@ blockquote {
 }
 
 pre {
-    padding: 2rem 1rem 1rem 1rem !important;
-    border-radius: 0.35rem;
+    padding: 2rem 1rem 1rem 3.2rem !important;
+    border-radius: 0.5rem;
     tab-size: 4;
 }
 
@@ -297,6 +297,9 @@ header .brand-logo .logo-img {
 
 header .brand-logo .logo-span {
     font-size: 1.6rem;
+    text-shadow: 2px 2px grey;
+    font-family: 'Bradley Hand';
+    margin-left: 5px;
 }
 
 /*修改顶部 logo 的文字垂直对齐为 top，避免默认 middle 看起来偏下*/
@@ -580,6 +583,7 @@ header .go-back i {
     line-height: 1.2em;
     margin-bottom: 20px;
     position: relative;
+    font-family: "Chalkduster";
 }
 
 .bg-cover .description {

@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Hello World of Personal Website, Z. H.">
+    <meta name="keywords" content="K-means Clustering, Z. H.">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Hello World of Personal Website | Z. H.</title>
+    <title>K-means Clustering | Z. H.</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,7 +310,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'c3ea5c2a0cf5e8b0627dfff5f79a702f34d8b5d946d18d0b39ac7ebfdd83caee';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('Please enter the password to view the contents')).toString(CryptoJS.enc.Hex)) {
                 alert('Incorrect password, returning to the home page');
@@ -323,12 +323,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/postFeature/hexo_github.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/postFeature/20210620_clustering.png')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Hello World of Personal Website</h1>
+                    <h1 class="description center-align post-title">K-means Clustering</h1>
                 </div>
             </div>
         </div>
@@ -444,16 +444,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Hexo/">
-                                <span class="chip bg-color">Hexo</span>
+                            <a href="/tags/Unsupervised-Learning/">
+                                <span class="chip bg-color">Unsupervised Learning</span>
                             </a>
                         
-                            <a href="/tags/CSS/">
-                                <span class="chip bg-color">CSS</span>
-                            </a>
-                        
-                            <a href="/tags/JavaScript/">
-                                <span class="chip bg-color">JavaScript</span>
+                            <a href="/tags/Clustering/">
+                                <span class="chip bg-color">Clustering</span>
                             </a>
                         
                     </div>
@@ -464,8 +460,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Front-end/" class="post-category">
-                                Front end
+                            <a href="/categories/Machine-Learning/" class="post-category">
+                                Machine Learning
                             </a>
                         
                     </div>
@@ -477,7 +473,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-08-01
+                    2021-06-20
                 </div>
                 
 
@@ -501,7 +497,31 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <h3 id="Overview-of-Clustering"><a href="#Overview-of-Clustering" class="headerlink" title="Overview of Clustering"></a>Overview of Clustering</h3><p>In machine learning, unsupervised learning help us to solve the problems by learning the data and classifying it without labels. And the <strong>clustering algorithm</strong> is a powerful unsupervised tool to discover hidden data structure and unknown features. If you’re working with large volumes of unstructured data, it will be better to partition the data into some sort of logical groupings before any analysis. At present, we are using clustering techniques everywhere, such as in identifying fraudulent or criminal activity, spam email filter, optimizing the network traffic flow and so on. They can use a large amount of unlabeled data to construct powerful clustering groups.</p>
+<!-- ![image info](K-means-cartoon.png) -->
+<img src="https://files.realpython.com/media/K-Means-Clustering-in-Python_Watermarked.14dc56523461.jpg" width="500" alt="K-means clustering illustration">
+&nbsp;
+
+<p>A <strong>cluster</strong> refers to a collection of data points aggregated together because of certain similarities. There are several basic clustering algorithms, like Hierarchical clustering, K-means clustering or density-based clustering, to be applied for different types of problems:</p>
+<ul>
+<li><strong>Hierarchical clustering</strong> is an algorithm that attempts to establish a hierarchy of cluster. It has two strategies, one is “bottom-up” approach, Agglomerative, which assumes that each observation is an independent cluster, and then merges two adjacent clusters at each level to reach the highest level. And the other is “top-down” approach, Divisive, which assumes that all observations belong to the same cluster, and then separates the relatively dissimilar observations in each cluster to the next level. </li>
+<li><strong>K-means clustering</strong> is an algorithm trying to find k different clusters, where k is specified in advanced, and the center of each cluster is calculated by using the mean value of the observations in the same cluster. And this post will be focus on this clustering algorithm.</li>
+<li><strong>Density-based clustering</strong> algorithm assumes that the cluster structure can be determined by the tightness of the sample distribution. Normally, the algorithm examines the connection between samples from the perspective of sample density, and continuously expands clusters based on connectable samples to obtain the final clustering results.</li>
+</ul>
+<h3 id="K-means"><a href="#K-means" class="headerlink" title="K-means"></a>K-means</h3><p>K-means clustering algorithm is originated from a vector quantization method in signal processing, and is now popular as a clustering method in the field of data mining. The purpose of K-means clustering is to <strong>divide n observations into k clusters</strong>, such that each observation belongs to the nearest mean, which is also call the centroid. One thing to be noted is that K-means is <strong>completely different</strong> from K-nearest neighbors (KNN), one classification method of supervised learning, although they both have the letter K in their name, which is a coincidence.</p>
+<p>Let’s take a look about how naïve K-means clustering works. K-means is an iterative process, the algorithm is composed of four steps:</p>
+<ol>
+<li><p>Select K random data points in the data space as the initial centroids, and each point represents a cluster center;</p>
+</li>
+<li><p>Assign each observation to the closest cluster by calculating its Euclidean distance with respect to each centroid;</p>
+</li>
+<li><p>Update the new cluster centroid by computing the average of the assigned observations within one cluster;</p>
+</li>
+<li><p>Repeat step 2 and 3 until no centroids position change.</p>
+</li>
+</ol>
+<h4 id="Implementation-of-naive-K-means-clustering"><a href="#Implementation-of-naive-K-means-clustering" class="headerlink" title="Implementation of naïve K-means clustering"></a>Implementation of naïve K-means clustering</h4><p>Although K-means clustering is computationally difficult, which belongs to NP-hard, however, efficient heuristic algorithms can help to converge quickly to a local optimum. </p>
+
                 
             </div>
             <hr/>
@@ -527,7 +547,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhenchenhong.github.io/2021/08/01/Hello-World-of-Personal-Website/">https://zhenchenhong.github.io/2021/08/01/Hello-World-of-Personal-Website/</a>
+                    <a href="https://zhenchenhong.github.io/2021/06/20/K-means-Clustering/">https://zhenchenhong.github.io/2021/06/20/K-means-Clustering/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -565,16 +585,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Hexo/">
-                                    <span class="chip bg-color">Hexo</span>
+                                <a href="/tags/Unsupervised-Learning/">
+                                    <span class="chip bg-color">Unsupervised Learning</span>
                                 </a>
                             
-                                <a href="/tags/CSS/">
-                                    <span class="chip bg-color">CSS</span>
-                                </a>
-                            
-                                <a href="/tags/JavaScript/">
-                                    <span class="chip bg-color">JavaScript</span>
+                                <a href="/tags/Clustering/">
+                                    <span class="chip bg-color">Clustering</span>
                                 </a>
                             
                         </div>
@@ -746,10 +762,9 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
                 <a href="/2021/08/01/Hello-World-of-Personal-Website/">
                     <div class="card-image">
@@ -766,9 +781,9 @@
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-01
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-01
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -781,7 +796,6 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -805,7 +819,7 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Next&nbsp;<i class="fas fa-chevron-right"></i>
+                Current&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
                 <a href="/2021/06/20/K-means-Clustering/">
@@ -838,6 +852,7 @@
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
