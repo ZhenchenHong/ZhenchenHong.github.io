@@ -498,8 +498,7 @@
         <div class="card-content article-card-content">
             <div id="articleContent">
                 <h3 id="Overview-of-Clustering"><a href="#Overview-of-Clustering" class="headerlink" title="Overview of Clustering"></a>Overview of Clustering</h3><p>In machine learning, unsupervised learning help us to solve the problems by learning the data and classifying it without labels. And the <strong>clustering algorithm</strong> is a powerful unsupervised tool to discover hidden data structure and unknown features. If you’re working with large volumes of unstructured data, it will be better to partition the data into some sort of logical groupings before any analysis. At present, we are using clustering techniques everywhere, such as in identifying fraudulent or criminal activity, spam email filter, optimizing the network traffic flow and so on. They can use a large amount of unlabeled data to construct powerful clustering groups.</p>
-<!-- ![image info](K-means-cartoon.png) -->
-<img src="https://files.realpython.com/media/K-Means-Clustering-in-Python_Watermarked.14dc56523461.jpg" width="500" alt="K-means clustering illustration">
+<img src="cluster_artword.jpeg" width="500">
 &nbsp;
 
 <p>A <strong>cluster</strong> refers to a collection of data points aggregated together because of certain similarities. There are several basic clustering algorithms, like Hierarchical clustering, K-means clustering or density-based clustering, to be applied for different types of problems:</p>
@@ -509,6 +508,12 @@
 <li><strong>Density-based clustering</strong> algorithm assumes that the cluster structure can be determined by the tightness of the sample distribution. Normally, the algorithm examines the connection between samples from the perspective of sample density, and continuously expands clusters based on connectable samples to obtain the final clustering results.</li>
 </ul>
 <h3 id="K-means"><a href="#K-means" class="headerlink" title="K-means"></a>K-means</h3><p>K-means clustering algorithm is originated from a vector quantization method in signal processing, and is now popular as a clustering method in the field of data mining. The purpose of K-means clustering is to <strong>divide n observations into k clusters</strong>, such that each observation belongs to the nearest mean, which is also call the centroid. One thing to be noted is that K-means is <strong>completely different</strong> from K-nearest neighbors (KNN), one classification method of supervised learning, although they both have the letter K in their name, which is a coincidence.</p>
+<!-- <img src="https://files.realpython.com/media/K-Means-Clustering-in-Python_Watermarked.14dc56523461.jpg" width="500" alt="K-means clustering illustration">
+&nbsp;
+ -->
+<img src="K-means-cartoon.png" width="500" alt="K-means clustering illustration">
+&nbsp;
+
 <p>Let’s take a look about how naïve K-means clustering works. K-means is an iterative process, the algorithm is composed of four steps:</p>
 <ol>
 <li><p>Select K random data points in the data space as the initial centroids, and each point represents a cluster center;</p>
@@ -520,7 +525,99 @@
 <li><p>Repeat step 2 and 3 until no centroids position change.</p>
 </li>
 </ol>
-<h4 id="Implementation-of-naive-K-means-clustering"><a href="#Implementation-of-naive-K-means-clustering" class="headerlink" title="Implementation of naïve K-means clustering"></a>Implementation of naïve K-means clustering</h4><p>Although K-means clustering is computationally difficult, which belongs to NP-hard, however, efficient heuristic algorithms can help to converge quickly to a local optimum. </p>
+<h4 id="Implementation-of-naive-K-means-clustering"><a href="#Implementation-of-naive-K-means-clustering" class="headerlink" title="Implementation of naïve K-means clustering"></a>Implementation of naïve K-means clustering</h4><p>&nbsp;<br>First of all, define a generator function to generate some artificial cluster testing data:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Generate clustering data by uniformly distributed data points around certain origin
+def fake_data(n &#x3D; 100, R &#x3D; 1, min_ &#x3D; 0, max_ &#x3D; 1, center_x &#x3D; 0 , center_y &#x3D; 0):
+    pi &#x3D; math.pi
+    r &#x3D; R * np.sqrt(np.random.uniform(min_, max_, size &#x3D; n)) 
+    theta &#x3D; np.random.uniform(min_, max_, size &#x3D; n) * 2 * pi
+
+    x &#x3D; center_x + np.cos(theta) * r
+    y &#x3D; center_y + np.sin(theta) * r
+
+    df &#x3D; np.column_stack([x,y])
+    df &#x3D; pd.DataFrame(df)
+    df.columns &#x3D; [&#39;x&#39;,&#39;y&#39;]
+    return(df)
+</code></pre>
+
+<p>&nbsp;<br>Let’s assume that we have three different groups of data points, which are gathering around theoretical centroids $(x, y) \in [(5, 30), (30, 10), (50, 50)]$:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># &#39;Random&#39; initilization
+np.random.seed(10)
+
+# Create data
+group_1 &#x3D; fake_data(n &#x3D; 30,R &#x3D; 10, center_x &#x3D; 5, center_y &#x3D; 30)
+group_2 &#x3D; fake_data(n &#x3D; 30,R &#x3D; 10, center_x &#x3D; 30, center_y &#x3D; 10)
+group_3 &#x3D; fake_data(n &#x3D; 30,R &#x3D; 10, center_x &#x3D; 50, center_y &#x3D; 50)
+
+# Merge into one testing data pool
+data &#x3D; group_1.append(group_2).append(group_3)
+data.head()</code></pre>
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+<pre><code>.dataframe tbody tr th &#123;
+    vertical-align: top;
+&#125;
+
+.dataframe thead th &#123;
+    text-align: right;
+&#125;
+</code></pre>
+<p></style></p>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>x</th>
+      <th>y</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>7.986546</td>
+      <td>21.740908</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>3.572751</td>
+      <td>29.804669</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>11.684570</td>
+      <td>25.677808</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.353208</td>
+      <td>37.847375</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>10.950436</td>
+      <td>33.800396</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>&nbsp;<br>Visualize the scatter data plots in data space:</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"># Plot pre-cluster data
+plt.scatter(data[&#39;x&#39;], data[&#39;y&#39;], c &#x3D; &#39;black&#39;, alpha&#x3D;0.3, edgecolors&#x3D;&#39;none&#39;)
+plt.xlabel(&#39;Feature 1&#39;)
+plt.ylabel(&#39;Feature 2&#39;)
+plt.title(&#39;Pre-cluster data&#39;)
+plt.show()</code></pre>
+
+
+
+<p>Although K-means clustering is computationally difficult, which belongs to NP-hard, however, efficient heuristic algorithms can help to converge quickly to a local optimum. </p>
 
                 
             </div>
@@ -1029,6 +1126,13 @@
 
 </main>
 
+
+<script src="https://cdn.bootcss.com/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script>
+    MathJax.Hub.Config({
+        tex2jax: {inlineMath: [['$', '$'], ['\(', '\)']]}
+    });
+</script>
 
 
 
