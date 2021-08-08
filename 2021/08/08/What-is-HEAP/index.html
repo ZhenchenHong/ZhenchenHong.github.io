@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Property Price Trend Prediction, Z. H.">
+    <meta name="keywords" content="What is HEAP?, Z. H.">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Property Price Trend Prediction | Z. H.</title>
+    <title>What is HEAP? | Z. H.</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,7 +310,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'c3ea5c2a0cf5e8b0627dfff5f79a702f34d8b5d946d18d0b39ac7ebfdd83caee';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('Please enter the password to view the contents')).toString(CryptoJS.enc.Hex)) {
                 alert('Incorrect password, returning to the home page');
@@ -323,12 +323,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/postFeature/housing_price_prediction_cover.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/postFeature/heap-cover.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Property Price Trend Prediction</h1>
+                    <h1 class="description center-align post-title">What is HEAP?</h1>
                 </div>
             </div>
         </div>
@@ -444,16 +444,12 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Regression/">
-                                <span class="chip bg-color">Regression</span>
+                            <a href="/tags/Data-structure/">
+                                <span class="chip bg-color">Data structure</span>
                             </a>
                         
-                            <a href="/tags/Boosting/">
-                                <span class="chip bg-color">Boosting</span>
-                            </a>
-                        
-                            <a href="/tags/Feature-engineering/">
-                                <span class="chip bg-color">Feature engineering</span>
+                            <a href="/tags/Heap/">
+                                <span class="chip bg-color">Heap</span>
                             </a>
                         
                     </div>
@@ -464,8 +460,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Machine-Learning/" class="post-category">
-                                Machine Learning
+                            <a href="/categories/Algorithm/" class="post-category">
+                                Algorithm
                             </a>
                         
                     </div>
@@ -477,28 +473,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-06-13
+                    2021-08-08
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-08-06
+                    2021-08-08
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    30
+                    1.4k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    8 Min
                 </div>
                 
 
@@ -521,7 +517,119 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="COVID-19-impacted-property-market"><a href="#COVID-19-impacted-property-market" class="headerlink" title="COVID-19 impacted property market"></a>COVID-19 impacted property market</h3><p>With the onset of COVID-19, the waves of relocation, the delays in new construction, and the transitions to remote working have impacted the property market. </p>
+                <!-- <img src="" width="500">
+&nbsp;
+ -->
+
+<h3 id="Start-from-one-Leetcode-problem"><a href="#Start-from-one-Leetcode-problem" class="headerlink" title="Start from one Leetcode problem"></a>Start from one Leetcode problem</h3><p>Below is the problem <a target="_blank" rel="noopener" href="https://leetcode.com/contest/weekly-contest-253/problems/remove-stones-to-minimize-the-total/">“Remove Stones to Minimize the Total”</a> from Leetcode weekly contest 254:</p>
+<p>You are given a 0-indexed integer array piles, where piles[i] represents the number of stones in the ith pile, and an integer k. You should apply the following operation exactly k times:</p>
+<p>Choose any piles[i] and remove $floor(piles[i] / 2)$ stones from it.</p>
+<ul>
+<li><p>Notice that you can apply the operation on the same pile more than once.</p>
+</li>
+<li><p>Return the minimum possible total number of stones remaining after applying the k operations.</p>
+</li>
+<li><p>floor(x) is the greatest integer that is smaller than or equal to x.</p>
+</li>
+</ul>
+<p>Constraints:</p>
+<ol>
+<li>1 &lt;= piles.length &lt;= $10^5$</li>
+<li>1 &lt;= piles[i] &lt;= $10^4$</li>
+<li>1 &lt;= k &lt;= $10^5$</li>
+</ol>
+<h3 id="First-glance-of-the-problem"><a href="#First-glance-of-the-problem" class="headerlink" title="First glance of the problem"></a>First glance of the problem</h3><p>As the problem mentions, we need to minimized the total piles after we remove corresponding piles. So everytime we should choose the maximum piles among the candidates. Upon this, the first thought would be to sort the piles list after each operation, however, the time complexity of the fastest sorting algorithm, such as Quicksort and Heapsort, the time complexity is $O(nlog(n))$. After we combine the k times operation, the optimal time complexity is $O(nklog(n))$, because n and k are comparable. And this way is not quite good for this scenario.</p>
+<p>Then, we realize that we do not need to sort the list everytime, because the only element we need to operate with is the maximum piles. But we need to be concerned about how to manage the piles list after each operation to fetch the maximum element accurately. Therefore, the heap data structure comes to help us with this problem.</p>
+<h3 id="Heap"><a href="#Heap" class="headerlink" title="Heap"></a>Heap</h3><p>Heap is a general term for one special data structure in computer science, which is usually regarded as a complete binary tree. Given any node P and C in the heap, if P is the parent node of C, then the value of P will be less than or equal to $($or greater than or equal to$)$ the value of C. The top node in the stack is called the root node, and the root node itself has no parent node. There are two common heaps: the Min-heap and the Max-heap. In the Min-heap, the value of the parent node is always less than or equal to the value of the child node, while in the Max-heap, the value of the parent node is always greater than or equal to the value of the child node.</p>
+<img src="heap-illustration.jpg" width="500" alt="Two common Heaps: Min-heap $($left$)$, Max-heap $($right$)$">
+&nbsp;
+
+<h4 id="Deletion-and-Insertion-values"><a href="#Deletion-and-Insertion-values" class="headerlink" title="Deletion and Insertion values"></a>Deletion and Insertion values</h4><ol>
+<li>Deletion process: Since deleting any element in the middle of the heap is expensive, we can simply replace the element to be deleted with the last element and delete the last element in the heap.</li>
+</ol>
+<ul>
+<li>Replace the root or element to be deleted with the last element.</li>
+<li>Remove the last element from the heap.</li>
+<li>The last element is now placed at the position of the root node. Therefore, it may not obey the heap properties. Then, heapify the last node placed at the position of root.</li>
+</ul>
+<ol start="2">
+<li>Insertion process: Inserting elements into the heap is a similar way to the deletion process above. </li>
+</ol>
+<ul>
+<li>First increase the heap size by 1 so that it can store new elements.</li>
+<li>Insert new elements at the end of the heap.</li>
+<li>This new element may distort the Heap property of its parent element. Therefore, in order to maintain the properties of Heap, the newly inserted element is piled up in a bottom-up method.</li>
+</ul>
+<h4 id="Implementation-of-Min-heap"><a href="#Implementation-of-Min-heap" class="headerlink" title="Implementation of Min-heap"></a>Implementation of Min-heap</h4><pre class="line-numbers language-python" data-language="python"><code class="language-python">class MinHeap:
+    def __init__(self): # The heap list is initialized with a value
+        self.heap_list &#x3D; [0]
+        self.current_size &#x3D; 0
+ 
+    def sift_up(self, i): # Moves the value up in the tree to maintain the heap property.
+        while i &#x2F;&#x2F; 2 &gt; 0: # While the element is not the root or the left element
+            
+            if self.heap_list[i] &lt; self.heap_list[i &#x2F;&#x2F; 2]: # If the element is less than its parent swap the elements
+                self.heap_list[i], self.heap_list[i &#x2F;&#x2F; 2] &#x3D; self.heap_list[i &#x2F;&#x2F; 2], self.heap_list[i] # Move the index to the parent to keep the properties
+            i &#x3D; i &#x2F;&#x2F; 2
+ 
+    def insert(self, k): # Inserts a value into the heap       
+        self.heap_list.append(k) # Append the element to the heap       
+        self.current_size +&#x3D; 1 # Increase the size of the heap     
+        self.sift_up(self.current_size) # Move the element to its position from bottom to the top
+ 
+    def sift_down(self, i):
+        
+        while (i * 2) &lt;&#x3D; self.current_size: # if the current node has at least one child
+            mc &#x3D; self.min_child(i) # Get the index of the min child of the current node
+            if self.heap_list[i] &gt; self.heap_list[mc]: # Swap the values of the current element is greater than its min child
+                self.heap_list[i], self.heap_list[mc] &#x3D; self.heap_list[mc], self.heap_list[i]
+            i &#x3D; mc
+ 
+    def min_child(self, i):
+        if (i * 2)+1 &gt; self.current_size: # If the current node has only one child, return the index of the unique child
+            return i * 2
+        else: 
+            if self.heap_list[i*2] &lt; self.heap_list[(i*2)+1]: # Herein the current node has two children
+                return i * 2 # Return the index of the min child according to their values
+            else:
+                return (i * 2) + 1
+ 
+    def delete_min(self):
+        if len(self.heap_list) &#x3D;&#x3D; 1: # Equal to 1 since the heap list was initialized with a value
+            return &#39;Empty heap&#39;
+        root &#x3D; self.heap_list[1] # Get root of the heap (The min value of the heap)       
+        self.heap_list[1] &#x3D; self.heap_list[self.current_size] # Move the last value of the heap to the root       
+        self.heap_list, _ &#x3D; self.heap_list # Pop the last value since a copy was set on the root 
+        self.current_size -&#x3D; 1 # Decrease the size of the heap        
+        self.sift_down(1) # Move down the root (value at index 1) to keep the heap property
+        return root # Return the min value of the heap
+</code></pre>
+
+<h4 id="Heap-queue-algorithm-in-Python"><a href="#Heap-queue-algorithm-in-Python" class="headerlink" title="Heap queue algorithm in Python"></a>Heap queue algorithm in Python</h4><p>Details seen in <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/heapq.html#heapq.heapify">heapq module page</a>.</p>
+<p>To create a heap, use a list initialized to [], or transform a populated list into a heap via function heapify.</p>
+<ul>
+<li>heapq.heappush((heap, item)): Push the value item onto the heap, maintaining the heap invariant.</li>
+<li>heapq.heappop(heap): Pop and return the smallest item from the heap, maintaining the heap invariant. If the heap is empty, IndexError is raised. To access the smallest item without popping it, use heap[0].</li>
+<li>heapq.heappushpop((heap, item)): Push item on the heap, then pop and return the smallest item from the heap. The combined action runs more efficiently than heappush followed by a separate call to heappop.</li>
+<li>heapq.heapify((x)): Transform list x into a heap, in-place, in linear time.</li>
+<li>heapq.heapreplace((heap, item)): Pop and return the smallest item from the heap, and also push the new item. The heap size doesn’t change. If the heap is empty, IndexError is raised.</li>
+<li>heapq.merge((*iterables, key=None, reverse=False)): Merge multiple sorted inputs into a single sorted output, for example, merge timestamped entries from multiple log files. Returns an iterator over the sorted values.</li>
+</ul>
+<h3 id="Final-solution-in-Python"><a href="#Final-solution-in-Python" class="headerlink" title="Final solution in Python"></a>Final solution in Python</h3><p>First, we need to transform our piles list into a heap queue, where we use heap = [-i for i in piles]. The reason we assign -i for each element in the piles is that we hope to update the maximum value in the piles in a Min-heao by heapq.heapify. So the reversion of the sign is necessary. </p>
+<p>Then, for each loop, we fetch the “minimum” value by heapq.heappop, which is the root element and update it by the rules: remove $floor(piles[i] / 2)$ stones from it. </p>
+<p>Lastly, use heapq.heappush to restore the updated element back to the heap queue.</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">class Solution:
+    def minStoneSum(self, piles: List[int], k: int) -&gt; int:
+        heap &#x3D; [-i for i in piles]
+        heapq.heapify(heap)
+        for i in range(k):
+            num &#x3D; -heapq.heappop(heap)
+            num -&#x3D; num&#x2F;&#x2F;2
+            heapq.heappush(heap,-num)
+        return -sum(heap)
+</code></pre>
+<p>&nbsp;<br>The time complexity of heappop and heappush are both $O(log(n))$, so the total time complexity is $O(klog(n))$, which is the optimal one. </p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Heap introduction: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Heap_(data_structure)">https://en.wikipedia.org/wiki/Heap_$($data_structure$)$</a><br>heapq — Heap queue algorithm: <a target="_blank" rel="noopener" href="https://docs.python.org/3/library/heapq.html">https://docs.python.org/3/library/heapq.html</a><br>Implementation of Min-heap: <a target="_blank" rel="noopener" href="https://www.educative.io/edpresso/heap-implementation-in-python">https://www.educative.io/edpresso/heap-implementation-in-python</a></p>
 
                 
             </div>
@@ -548,7 +656,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhenchenhong.github.io/2021/06/13/Housing-price-prediction/">https://zhenchenhong.github.io/2021/06/13/Housing-price-prediction/</a>
+                    <a href="https://zhenchenhong.github.io/2021/08/08/What-is-HEAP/">https://zhenchenhong.github.io/2021/08/08/What-is-HEAP/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -586,16 +694,12 @@
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Regression/">
-                                    <span class="chip bg-color">Regression</span>
+                                <a href="/tags/Data-structure/">
+                                    <span class="chip bg-color">Data structure</span>
                                 </a>
                             
-                                <a href="/tags/Boosting/">
-                                    <span class="chip bg-color">Boosting</span>
-                                </a>
-                            
-                                <a href="/tags/Feature-engineering/">
-                                    <span class="chip bg-color">Feature engineering</span>
+                                <a href="/tags/Heap/">
+                                    <span class="chip bg-color">Heap</span>
                                 </a>
                             
                         </div>
@@ -766,7 +870,7 @@
         repo: '',
         owner: 'Zhenchen Hong',
         admin: null,
-        id: '2021-06-13T11-31-05',
+        id: '2021-08-08T11-30-21',
         distractionFreeMode: false  // Facebook-like distraction free mode
     });
 
@@ -794,49 +898,51 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
-                <a href="/2021/06/20/K-means-Clustering/">
+                <a href="/2021/08/08/What-is-HEAP/">
                     <div class="card-image">
                         
-                        <img src="/images/postFeature/20210620_clustering.png" class="responsive-img" alt="K-means Clustering">
+                        <img src="/images/postFeature/heap-cover.jpg" class="responsive-img" alt="What is HEAP?">
                         
-                        <span class="card-title">K-means Clustering</span>
+                        <span class="card-title">What is HEAP?</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            An introduction of K-means clustering with the implementation and pros/cons analysis.
+                            A specialized tree-based data structure that satisfies the heap property.
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-06-20
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-08
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Machine-Learning/" class="post-category">
-                                    Machine Learning
+                            <a href="/categories/Algorithm/" class="post-category">
+                                    Algorithm
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Unsupervised-Learning/">
-                        <span class="chip bg-color">Unsupervised Learning</span>
+                    <a href="/tags/Data-structure/">
+                        <span class="chip bg-color">Data structure</span>
                     </a>
                     
-                    <a href="/tags/Clustering/">
-                        <span class="chip bg-color">Clustering</span>
+                    <a href="/tags/Heap/">
+                        <span class="chip bg-color">Heap</span>
                     </a>
                     
                 </div>
@@ -847,26 +953,26 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/06/13/Housing-price-prediction/">
+                <a href="/2021/08/06/Fascinated-by-t-SNE/">
                     <div class="card-image">
                         
-                        <img src="/images/postFeature/housing_price_prediction_cover.jpg" class="responsive-img" alt="Property Price Trend Prediction">
+                        <img src="/images/postFeature/tsne-cover.jpg" class="responsive-img" alt="Fascinated by t-SNE">
                         
-                        <span class="card-title">Property Price Trend Prediction</span>
+                        <span class="card-title">Fascinated by t-SNE</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            How did the COVID-19 pandemic affct the property market?
+                            t-distributed stochastic neighbor embedding (t-SNE) is powerful in dimension reduction.
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-06-13
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-06
                             </span>
                         <span class="publish-author">
                             
@@ -880,20 +986,15 @@
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Regression/">
-                        <span class="chip bg-color">Regression</span>
+                    <a href="/tags/Embedding/">
+                        <span class="chip bg-color">Embedding</span>
                     </a>
                     
-                    <a href="/tags/Boosting/">
-                        <span class="chip bg-color">Boosting</span>
-                    </a>
-                    
-                    <a href="/tags/Feature-engineering/">
-                        <span class="chip bg-color">Feature engineering</span>
+                    <a href="/tags/Nonlinear-method/">
+                        <span class="chip bg-color">Nonlinear method</span>
                     </a>
                     
                 </div>
