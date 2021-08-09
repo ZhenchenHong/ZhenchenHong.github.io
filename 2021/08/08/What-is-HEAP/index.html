@@ -609,10 +609,10 @@
 <p>To create a heap, use a list initialized to [], or transform a populated list into a heap via function heapify.</p>
 <ul>
 <li>heapq.heappush((heap, item)): Push the value item onto the heap, maintaining the heap invariant.</li>
-<li>heapq.heappop(heap): Pop and return the smallest item from the heap, maintaining the heap invariant. If the heap is empty, IndexError is raised. To access the smallest item without popping it, use heap[0].</li>
+<li>heapq.heappop((heap)): Pop and return the smallest item from the heap, maintaining the heap invariant. To access the smallest item without popping it, use heap[0].</li>
 <li>heapq.heappushpop((heap, item)): Push item on the heap, then pop and return the smallest item from the heap. The combined action runs more efficiently than heappush followed by a separate call to heappop.</li>
 <li>heapq.heapify((x)): Transform list x into a heap, in-place, in linear time.</li>
-<li>heapq.heapreplace((heap, item)): Pop and return the smallest item from the heap, and also push the new item. The heap size doesn’t change. If the heap is empty, IndexError is raised.</li>
+<li>heapq.heapreplace((heap, item)): Pop and return the smallest item from the heap, and also push the new item. The heap size doesn’t change.</li>
 <li>heapq.merge((*iterables, key=None, reverse=False)): Merge multiple sorted inputs into a single sorted output, for example, merge timestamped entries from multiple log files. Returns an iterator over the sorted values.</li>
 </ul>
 <h3 id="Final-solution-in-Python"><a href="#Final-solution-in-Python" class="headerlink" title="Final solution in Python"></a>Final solution in Python</h3><p>First, we need to transform our piles list into a heap queue, where we use heap = [-i for i in piles]. The reason we assign -i for each element in the piles is that we hope to update the maximum value in the piles in a Min-heao by heapq.heapify. So the reversion of the sign is necessary. </p>
@@ -967,7 +967,7 @@
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            t-distributed stochastic neighbor embedding (t-SNE) is powerful in dimension reduction.
+                            Dimension reduction tool: t-distributed stochastic neighbor embedding (t-SNE).
                         
                     </div>
                     <div class="publish-info">
