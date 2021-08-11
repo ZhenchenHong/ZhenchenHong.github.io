@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="Random number generator with normal distribution, Z. H.">
+    <meta name="keywords" content="How to evaluate the performance of ML models?, Z. H.">
     <meta name="description" content="">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>Random number generator with normal distribution | Z. H.</title>
+    <title>How to evaluate the performance of ML models? | Z. H.</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -310,7 +310,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = '';
+        let pwd = 'c3ea5c2a0cf5e8b0627dfff5f79a702f34d8b5d946d18d0b39ac7ebfdd83caee';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('Please enter the password to view the contents')).toString(CryptoJS.enc.Hex)) {
                 alert('Incorrect password, returning to the home page');
@@ -323,12 +323,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/images/postFeature/random-number-normal-cover.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/images/postFeature/metrics-cover.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">Random number generator with normal distribution</h1>
+                    <h1 class="description center-align post-title">How to evaluate the performance of ML models?</h1>
                 </div>
             </div>
         </div>
@@ -444,12 +444,8 @@
                     
                     <div class="article-tag">
                         
-                            <a href="/tags/Random-number/">
-                                <span class="chip bg-color">Random number</span>
-                            </a>
-                        
-                            <a href="/tags/Sampling/">
-                                <span class="chip bg-color">Sampling</span>
+                            <a href="/tags/Metrics/">
+                                <span class="chip bg-color">Metrics</span>
                             </a>
                         
                     </div>
@@ -460,8 +456,8 @@
                     <div class="post-cate">
                         <i class="fas fa-bookmark fa-fw icon-category"></i>
                         
-                            <a href="/categories/Statistics/" class="post-category">
-                                Statistics
+                            <a href="/categories/Machine-Learning/" class="post-category">
+                                Machine Learning
                             </a>
                         
                     </div>
@@ -473,7 +469,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2021-08-09
+                    2021-08-10
                 </div>
                 
 
@@ -487,14 +483,14 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    2.8k
+                    372
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    17 Min
+                    2 Min
                 </div>
                 
 
@@ -517,241 +513,52 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Random-number-generator"><a href="#Random-number-generator" class="headerlink" title="Random number generator"></a>Random number generator</h3><p>Random number generator $($RNG$)$ is a method or device that generates ideally unrelated numbers through some algorithms, physical signals, environmental noise, etc. Throwing coins, throwing dice, and shuffling cards are common ways of generating random numbers in life. The hardware random number generator $($HRNG$)$ can be a true random number generator, which can generate a random number according to the function of the current value of a specific physical environment attribute, and the value is constantly changing in a way that it is almost impossible to model. However, the pseudo-random numbers on most computers are not true random numbers, but a series of numbers with a relatively large repetition period, which are generated according to a certain algorithm and seed value.</p>
-<img src="dice-cards.jpg" width = "300">
-&nbsp;
-
-<h3 id="Normal-distributed-RNG"><a href="#Normal-distributed-RNG" class="headerlink" title="Normal distributed RNG"></a>Normal distributed RNG</h3><p>This post introduces multiple ways to generate random numbers which are normally distributed from uniformly distributed random variables, including Central limit theorem $($CLT$)$, inverse cumulative distribution density $($CDF$)$, acceptance-rejection sampling, Box-Muller algorithm and Ziggurat algorithm.</p>
-<img src="standard-normal-distribution.jpg" width = "500">
-&nbsp;
-
-<h4 id="Central-limit-theorem"><a href="#Central-limit-theorem" class="headerlink" title="Central limit theorem"></a>Central limit theorem</h4><p>Central limit theorem $($CLT$)$ is a probability theory, which states that under appropriate conditions, the mean values of a large number of independent and identically distributed ((i.i.d.)) random variables with finite variance are properly standardized and then converge to a normal distribution according to the distribution. This set of theorems is the theoretical basis of mathematical statistics and error analysis, and points out the condition that the sum of a large number of random variables approximately obeys a normal distribution.</p>
-<p>Assume that (X_1, X_2, …, X_n) are (i.i.d.) random variables, with the mean as $\mu$ and variance $\sigma^2$, then there is a random variable (Z_n) has the following form:</p>
-<p>$$Z_n = \frac{X_1 + X_2 + … + X_n - n\mu}{\sigma \sqrt{n}} ,$$</p>
-<p>which has a asymptotic distribution as standard normal distribution (N(0,1)). That is when n $\rightarrow \infty$,</p>
-<p>$$P(\frac{X_1 + X_2 + … + X_n - n\mu}{\sigma \sqrt{n}}\leq x) \sim \frac{1}{2\pi} \int_{-\infty}^{x} e^{-\frac{t^2}{2}} dt $$ </p>
-<p>in other words, the sum of independent and identically distributed random variables is normally distributed. However, it might not be always true, like the normalized (i.i.d.) Cauchy distributed random variables is standard Cauchy distributed, because the Cauchy distribution has no mean, variance or higher moments defined. It is a different topic which will not be explained in detailed here. But it is still safe to generate normally distributed random numbers when the (i.i.d.) random variables are uniformly distributed.<br>&nbsp;</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import matplotlib.pyplot as plt
-import matplotlib
-import scipy.stats as stats
-import numpy as np
-import time
-
-font &#x3D; &#123;&#39;weight&#39;: &#39;bold&#39;,&#39;size&#39;: 28&#125;
-matplotlib.rc(&#39;font&#39;, **font)
-
-# Sampling function by CLT
-def getNormal(SampleSize,n):
-    result &#x3D; []
-    for i in range(SampleSize):
-        # Deploy CLT，[0,1) uniform distribution with mean as 0.5, variance as 1&#x2F;12
-        iid &#x3D; (np.mean(np.random.uniform(0, 1, n))-0.5)*np.sqrt(12*n)
-        result.append(iid)
-    return result
-
-# Generate 10000 numbers, check their distribution
-# Select different n to check the performance
-SampleSize &#x3D; 10000
-N &#x3D; [1, 10, 100, 1000, 10000, 100000] 
-plt.figure(figsize&#x3D;(30, 20))
-sub_plot &#x3D; 230
-
-# Plot sampling distribution
-for index,n in enumerate(N):
-    time0 &#x3D; time.time()
-    sub_plot +&#x3D; 1
-    plt.subplot(sub_plot)
-    normal &#x3D; getNormal(SampleSize, n)
-    plt.title(&quot;T&#x3D;&#123;0&#125;s, S&#x3D;&#123;1&#125;, P&#x3D;&#123;2&#125;&quot;.format(round((time.time()-time0),2), round(stats.normaltest(normal).statistic,2), round(stats.normaltest(normal).pvalue,2)))
-    plt.hist(normal,np.linspace(-4,4,81), density &#x3D; True, label&#x3D;&quot;n&#x3D;&#123;0&#125;&quot;.format(n))
-    plt.legend()
-plt.savefig(&#39;CLT-normal.jpg&#39;, dpi&#x3D;200)
-plt.show()</code></pre>
-<p>&nbsp;<br>In the following histogram figures:</p>
+                <h3 id="Evaluation-before-Prediction"><a href="#Evaluation-before-Prediction" class="headerlink" title="Evaluation before Prediction"></a>Evaluation before Prediction</h3><p>Evaluating the machine learning models is an essential part of any project. It is not suggested to predict values on unseen data without any performance evaluation. And sometimes, the models may provide satisfying results when evaluate using a metric like accuracy score but could possibly give poor results by logarithmic loss or some other metrics. Then, it is important to know what the basic evaluation metrics are, how they work and when to used them. And there is no one single metric which is appropriate for all the models evaluation. The choice of metric mainly depends on the type of model and the implementation plan of the model.</p>
+<p>The following metrics would be included in this post by the type of the problems:</p>
 <ul>
-<li>T: sampling time</li>
-<li>S: the statistic, $S=s^2 + k^2$, where (s) is the z-score returned by skewtest and (k) is the z-score returned by kurtosistest</li>
-<li>P: p-value, a 2-sided chi squared probability for the hypothesis test</li>
+<li>Classification problems<ul>
+<li>Confusion matrix<ul>
+<li>Accuracy</li>
+<li>Precision</li>
+<li>Recall</li>
+<li>F1 score</li>
+<li>Receiver operating characteristic $($ROC$)$ curve</li>
+<li>Precision-Recall curve</li>
 </ul>
-<p>The closer the statistic is to 0, the better it indicates that the data fits the standard normal distribution better. If the P value is greater than the significance level, which is usually 0.05 , accepting the null hypothesis, and it is judged that the population of the sampling obeys the normal distribution.</p>
-<img src="CLT-normal.jpg" width = "500" alt="Different sampling sizes of normal distributed RNG by CLT">
+</li>
+<li>Logarithmic loss</li>
+</ul>
+</li>
+<li>Regression problems    <ul>
+<li>Mean Absolute Error $($MAE$)$</li>
+<li>Mean Squared Error $($MSE$)$</li>
+<li>Root Mean Squared Error $($RMSE$)$</li>
+<li>The coefficient of determination $($R-squared$)$, Adjusted R-squared</li>
+<li>Explained variance</li>
+</ul>
+</li>
+<li>Clustering problems<ul>
+<li>Rand index</li>
+<li>Mutual Information</li>
+<li>Silhouette coefficient</li>
+<li>Dunn’s index</li>
+</ul>
+</li>
+</ul>
+<h3 id="Classification-problems"><a href="#Classification-problems" class="headerlink" title="Classification problems"></a>Classification problems</h3><p>Classification in machine learning refers to a predictive modeling problem in which a class label is predicted for a given example of input data, which belongs to the supervised problem.</p>
+<img src="classification-feature.jpg" width="500" alt="Classification [source:datamahadev.com]">
 &nbsp;
 
-<p>As shown above, when (n=1), it is actually a uniform distribution. As (n) gradually increases, the distribution of random numbers generated by CLT is getting closer and closer to the normal distribution. Therefore, it is feasible to use the central limit theorem to forcefully generate random numbers that follow the normal distribution. However, the speed of generating a normal distribution in this way is very slow, because it is very inefficient to generate several (i.i.d.) random variables.</p>
-<h4 id="Inverse-cumulative-distribution-function"><a href="#Inverse-cumulative-distribution-function" class="headerlink" title="Inverse cumulative distribution function"></a>Inverse cumulative distribution function</h4><p>Not only CLT is inefficient, but also its RNG is too rough to be used in real life, even after generating over 100,000 (i.i.d.) random variables above. Then, theoretical inversion of cumulative distribution function $($CDF$)$ comes to help with accuracy. Suppose (u = F (x)) is a CDF of (x), (F^{-1}(u)) is its inverse function. Then, if (X) is a random variable that has standard uniform distribution ~ U((0, 1)), then (F^{-1}(X)) has the distribution given by the cumulative distribution function (F). For example, in order to generate the random numbers with exponential distribution, which has the CDF as (F(x)) (= 1-e^{-\lambda x}) and the inverse CDF as (F^{-1}(x))(=-\frac{ln(1-x)}{\lambda}), only need to generate random variables following uniform distribution ~ (U(0, 1)) and apply the inverse CDF, then the output random numbers are exponential distributed.<br><img src="Normal_Distribution_CDF.svg" width = "500" alt="CDF of Normal distribution with different mean and variance [source: WikiMedia]"><br>&nbsp;<br>Same for the normal distributed RNG, which has the CDF as (\frac{1}{2}(1+erf(\frac{x-\mu}{\sigma \sqrt{n}}))), where (erf(z)) (= \frac{2}{\sqrt{\pi}}\int_{0}^{z}e^{-t^2} dt), although it is difficult to access the analytical form of the inverse CDF of normal distribution, the numerical form of this inverse function is available. (R) language has the package of (qnorm), while the (Excel) has the function (NORMINV). And in the (Python), (SciPy.stat) provides (norm.ppf):<br>&nbsp;</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import matplotlib.pyplot as plt
-import numpy as np
-from scipy.stats import norm
-import scipy.stats as stats
-import time
-
-font &#x3D; &#123;&#39;weight&#39;: &#39;bold&#39;,&#39;size&#39;: 25&#125;
-matplotlib.rc(&#39;font&#39;, **font)
-
-# Sampling function by inverse CDF
-def getNormal(SampleSize):
-    iid &#x3D; np.random.uniform(0,1,SampleSize)
-    result &#x3D; norm.ppf(iid)
-    return result
-
-# Generate 10000000 numbers, check their distribution
-SampleSize &#x3D; 10000000
-time0 &#x3D; time.time()
-normal &#x3D; getNormal(SampleSize)
-plt.figure(figsize&#x3D;(20, 15))
-plt.title(&quot;T&#x3D;&#123;0&#125;s, S&#x3D;&#123;1&#125;, P&#x3D;&#123;2&#125;&quot;.format(round((time.time()-time0),2), round(stats.normaltest(normal).statistic,2), round(stats.normaltest(normal).pvalue,2)))
-plt.hist(normal,np.linspace(-4,4,81),density &#x3D; True)
-plt.savefig(&#39;invCDF-normal.jpg&#39;, dpi&#x3D;200)
-plt.show()</code></pre>
-<img src="invCDF-normal.jpg" width = "500" alt="Normal distributed RNG by inverse CDF">
-&nbsp;
-
-
-<h4 id="Box-Muller-algorithm"><a href="#Box-Muller-algorithm" class="headerlink" title="Box-Muller algorithm"></a>Box-Muller algorithm</h4><p>Although the above CLT and inverse CDF methods are convenient and easy to understand, they are too inefficient and impractical, only with theoretical importance. So how to generate a normal distributed RNG in practice?</p>
-<p>Box-Muller algorithm, which only uses some elementary mathematical functions, was the standard normal RNG for a long time. Recall that in the inverse CDF, the analytical form of normal CDF exists theoretically in one-dimension. Box-Muller method extends it to two-dimensions, by which the joint normal CDF has the inverse function in analytical form. Assume that (U_1, U_2) following uniform distribution ~ (U(0, 1)), and the joint probability density function (PDF) of ((U_1, U_2)) is (f(u_1, u_2))(= 1), where (0 \leq u_1, u_2 \leq 1). Then if there is:</p>
-<!-- \\[
-f(x,y) =
-  \begin{cases}
-    0 &\text{if } (x,y) \in \vect{I} \land y \ge x\\\\\\\\
-    1 &\text{if } (x,y) \in \vect{I} \land y < x
-  \end{cases}
-\\] -->
-
-<p>\[<br>  \begin{cases}<br>    u_1 = g_1(x, y) \\<br>    u_2 = g_2(x, y)<br>  \end{cases}<br>\]</p>
-<p>where exists the inverse transformation and the 1st order partial derivative:</p>
-<p>\[<br>  \begin{cases}<br>    x = h_1(u_1, u_2) \\<br>    y = h_2(u_1, u_2)<br>  \end{cases}<br>\]</p>
-<p>Set (|J|) is the determinant of the Jacobian matrix, which is non-zero:</p>
-<p>\[|J| =<br>\begin{vmatrix}<br>\frac{\partial u_1}{\partial x} &amp; \frac{\partial u_1}{\partial y}  \\<br>\frac{\partial u_2}{\partial x} &amp; \frac{\partial u_2}{\partial y}<br>\end{vmatrix} \neq 0<br>\]</p>
-<p>Based on the joint (PDF) transformation and (PDF) of uniform distribution:</p>
-<p>$$f_{X,Y}(x,y) = f_{U_1,U_2}(g_1(x,y),g_2(x,y))\lvert{J}\lvert = \lvert{J}\lvert,$$</p>
-<p>Now, let desired random variables (X, Y) have the following relationship with uniformly distributed random variables (U_1, U_2):</p>
-<p>\[<br>  \begin{cases}<br>    x = h_1(u_1, u_2) = \sqrt{-2ln(u_1)}cos(2\pi u_2) \\<br>    y = h_2(u_1, u_2) = \sqrt{-2ln(u_1)}sin(2\pi u_2)<br>  \end{cases}<br>\]</p>
-<p>then,</p>
-<p>\[<br>  \begin{cases}<br>    u_1 = e^{-\frac{x^2+y^2}{2}} \\<br>    u_2 = \frac{1}{2\pi}arctan(\frac{y}{x})<br>  \end{cases}<br>\]</p>
-<p>where the determinant of the Jacobian matrix:</p>
-<p>$$\begin{eqnarray}<br>|J|<br>&amp;=&amp;<br>\begin{vmatrix}<br>\frac{\partial u_1}{\partial x} &amp; \frac{\partial u_1}{\partial y}  \\<br>\frac{\partial u_2}{\partial x} &amp; \frac{\partial u_2}{\partial y}<br>\end{vmatrix}    \\\<br>&amp;=&amp;<br>\begin{vmatrix}<br>-x e^{-\frac{x^2+y^2}{2}} &amp; -y e^{-\frac{x^2+y^2}{2}}  \\<br>-\frac{y}{2\pi (x^2+y^2)} &amp; \frac{x}{2\pi (x^2+y^2)}<br>\end{vmatrix}    \\\<br>&amp;=&amp;<br>-(\frac{1}{2\pi}e^{-\frac{1}{2}x^2})(\frac{1}{2\pi}e^{-\frac{1}{2}y^2}),<br>\end{eqnarray}$$</p>
-<p>which is the joint (PDF) of two independent normal distributed random variables. Thus, if (i.i.d.) (U_1, U_2) follow uniform distribution ~ (U(0, 1)), by the transformation of (h_1(u_1, u_2)) and (h_2(u_1, u_2)), the output random variables are normally distributed.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import matplotlib.pyplot as plt
-import matplotlib
-import scipy.stats as stats
-import numpy as np
-import time
-
-font &#x3D; &#123;&#39;weight&#39;: &#39;bold&#39;,&#39;size&#39;: 25&#125;
-matplotlib.rc(&#39;font&#39;, **font)
-
-# Sampling function by Box-Muller
-def getNormal(SampleSize):
-    iid &#x3D; np.random.uniform(0,1,SampleSize)
-    # Divide iid list into two parts, one for u_1, the other for u_2
-    normal1 &#x3D; np.cos(2*np.pi*iid[0:int(SampleSize&#x2F;2)-1])*np.sqrt(-2*np.log(iid[int(SampleSize&#x2F;2):SampleSize-1]))
-    normal2 &#x3D; np.sin(2*np.pi*iid[0:int(SampleSize&#x2F;2)-1])*np.sqrt(-2*np.log(iid[int(SampleSize&#x2F;2):SampleSize-1]))
-    return np.hstack((normal1,normal2))
-
-time0 &#x3D; time.time()
-SampleSize &#x3D; 10000000
-normal &#x3D; getNormal(SampleSize)
-
-# Plot sampling distribution
-plt.figure(figsize&#x3D;(15,10))
-plt.title(&quot;T&#x3D;&#123;0&#125;s, S&#x3D;&#123;1&#125;, P&#x3D;&#123;2&#125;&quot;.format(round((time.time()-time0),2), round(stats.normaltest(normal).statistic,2), round(stats.normaltest(normal).pvalue,2)))
-plt.hist(normal,np.linspace(-4,4,81), density &#x3D; True)
-plt.savefig(&#39;box_muller_hist.jpg&#39;, dpi &#x3D; 200)
-plt.show()</code></pre>
-<img src="box_muller_hist.jpg" width = "500" alt="Normal distributed RNG by Box-Muller algorithm">
-&nbsp;
-
-<p>Actually, with this better performance in sampling, the Box-Muller algorithm was the mainstream normal distributed RNG in popular numerical software, such as Matlab, until the appearance of Ziggurat algorithm, which would be explained in the later part.</p>
-<h4 id="Acceptance-Rejection-sampling"><a href="#Acceptance-Rejection-sampling" class="headerlink" title="Acceptance-Rejection sampling"></a>Acceptance-Rejection sampling</h4><p>Although the Box-Muller algorithm is better in efficiency than the traditional RNG methods and is one widely used sampling method in industry, it uses trigonometric and logarithmic functions, which are still relatively time-consuming. How about not to use these “complex” functions?</p>
-<p>Acceptance-Rejection method is one of Monte Carlo methods, which is a basic technique used to generate observations from a given probability distribution based on the accpetance/rejection of random variable. Actually, the rejection sampling has the similar idea as obtaining the density function of a random variable onto a board and throwing darts at it, in which the area of target board is proportional to the number of darts within the certain boundary. Rejection sampling requires one proposal probability distribution (g(x)), which is easy to sampling from, and one constant (M), which scales the proposal distribution larger than the desired distribution in overall sampling space. The proof of validation of acceptance-rejection sampling can be found <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rejection_sampling">here</a>.</p>
-<!-- https://zhuanlan.zhihu.com/p/164728853 -->
-
-<p>How the acceptance-rejection sampling works:</p>
+<h4 id="Confusion-matrix"><a href="#Confusion-matrix" class="headerlink" title="Confusion matrix"></a>Confusion matrix</h4><p>The confusion matrix is a situation analysis table that summarizes the prediction results of the classification model in data science, data analysis, and machine learning. The records in the data set are summarized in the form of a matrix according to the two criteria of the real category and the classification judgment made by the classification model.<br><img src="confusion_matrix.jpg" width="500" alt="Confusion matrix by Admit"><br>&nbsp;</p>
 <ul>
-<li>Sample a point on the x-axis from the uniform distribution, which is the proposal distribution.$($making the sampling board as rectangle, can also use other easily sampling proposal distributions$)$</li>
-<li>Draw a vertical line at each sampling x-position, up to the maximum y-value of the (PDF) of the uniform distribution.</li>
-<li>Sample uniformly along this vertical line. If the sampled value is greater than the value of the desired distribution at this vertical line, reject this sampled x-value and return to the first step; otherwise store this x-value as one successful sampling from the desired distribution then return to the first step.</li>
+<li>True Positive $($TP$)$：outcomes where the model correctly predicts the positive class.</li>
+<li>False Positive $($FP$)$：outcomes where the model incorrectly predicts the positive class.</li>
+<li>False Negative $($FN$)$：outcomes where the model incorrectly predicts the negative class</li>
+<li>True Negative $($TN$)$：outcomes where the model correctly predicts the negative class.</li>
 </ul>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"># necessary package 
-import matplotlib.pyplot as plt
-import matplotlib
-import scipy.stats as stats
-import numpy as np
-import time
-
-font &#x3D; &#123;&#39;weight&#39;: &#39;bold&#39;,&#39;size&#39;: 22&#125;
-matplotlib.rc(&#39;font&#39;, **font)
-
-# target sampling distribution
-def normal_0_1(x):
-    return (1&#x2F;np.sqrt(2*np.pi))*np.exp(-x**2&#x2F;2)
-
-# acceptance&#x2F;rejection sampling
-def rejection_sampling(function, num_samples, xmin, xmax, ymax &#x3D; 1):
-    x &#x3D; np.random.uniform(low &#x3D; xmin, high &#x3D; xmax, size &#x3D; num_samples)
-    y &#x3D; np.random.uniform(low &#x3D; 0, high &#x3D; ymax, size &#x3D; num_samples)
-    flag &#x3D; (y &lt; function(x)).astype(int)
-    return x, y, flag
-
-# xrange
-t &#x3D; 4
-
-# sampling times
-n_trials &#x3D; 10000000
-
-# (x,y) of normal_0_1 pdf curve for validation
-time0 &#x3D; time.time()
-x_pdf &#x3D; np.linspace(-t, t, 1000)
-y_pdf &#x3D; normal_0_1(x_pdf)
-
-# sampling (x,y)
-x_sample, y_sample, flag &#x3D; rejection_sampling(normal_0_1, n_trials, -t, t)
-
-# collect qualified (x)
-x_hist &#x3D; [] 
-for i in range(len(x_sample)):
-    if flag[i]&#x3D;&#x3D;1:
-        x_hist.append(x_sample[i])
-
-# plot pdf curve
-plt.figure(figsize&#x3D;(15,10))
-plt.plot(x_pdf, y_pdf, label &#x3D; &quot;f(x) of N(0,1)&quot;)
-
-# plot histogram of sampling
-plt.title(&quot;T&#x3D;&#123;0&#125;s, S&#x3D;&#123;1&#125;, P&#x3D;&#123;2&#125;&quot;.format(round((time.time()-time0),2), round(stats.normaltest(x_hist).statistic,2), round(stats.normaltest(x_hist).pvalue,2)))
-plt.hist(x_hist,np.linspace(-4,4,81), density &#x3D; True, label &#x3D; &quot;histogram of qualified samples&quot;)
-
-# save figure
-plt.legend(loc&#x3D;&quot;upper left&quot;, fontsize&#x3D;15)
-plt.savefig(&#39;Rejection_hist.jpg&#39;, dpi &#x3D; 200)
-plt.show()</code></pre>
-<img src="Rejection_hist.jpg" width = "500" alt="Normal distributed RNG by acceptance-rejection sampling">
-&nbsp;
-
-<p>This algorithm can also be used to sample from the area under any curve $($finite function’s integral$)$, regardless of whether the function can be integrated to 1. But the sampling efficiency is still as poor as the first two sampling methods and slower than the Box-Muller algorithm.</p>
-<h4 id="Ziggurat-algorithm"><a href="#Ziggurat-algorithm" class="headerlink" title="Ziggurat algorithm"></a>Ziggurat algorithm</h4><p>If check the validation proof of acceptance-rejection sampling carefully, the acceptance rate of original acceptance-rejection sampling is really low, which depends on the scaling magnitude (M) between proposal probability function and the desired probability function. And large scaling magnitude means large proportional sampling observations are rejected, especially for the probability function like normal distribution, which has a long tail in low frequency region. And the Ziggurat algorithm can improve the efficiency of rejection sampling a lot by “customizing” the proposal probability function to curve it closer to the desired density function $($in the other word, (M) is not the same constant everywhere$)$.</p>
-<img src="ziggurat-illustration.jpg" width = "500" alt="How Ziggurat algorithm works [source: heliosphan.org]">
-&nbsp;
-
-<p>As shown in the diagram above, the secret of high efficiency of Ziggurat algorithm is to choose an optimal form of proposal function (g(x)). Multiple rectangles stacked together ensures that the shadow part $($rejection region$)$ is always small, which increases acceptance rate and makes sampling process efficiently.</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python">import zignor
-import scipy.stats as stats
-N &#x3D; 10000000
-time0 &#x3D; time.time()
-x &#x3D; zignor.randn(N)
-plt.figure(figsize&#x3D;(15,10))
-plt.title(&quot;T&#x3D;&#123;0&#125;s, S&#x3D;&#123;1&#125;, P&#x3D;&#123;2&#125;&quot;.format(round((time.time()-time0),2), round(stats.normaltest(x).statistic,2), round(stats.normaltest(x).pvalue,2)))
-plt.hist(normal,np.linspace(-4,4,81), density &#x3D; True)
-plt.savefig(&#39;ziggurant_hist.jpg&#39;, dpi &#x3D; 200)
-plt.show()</code></pre>
-<img src="ziggurat_hist.jpg" width = "500" alt="Normal distributed RNG by Ziggurat algorithm">
-&nbsp;
-<!-- #### Other algorithms
-https://www.doc.ic.ac.uk/~wl/papers/07/csur07dt.pdf
- -->
-
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p>Random number generator introduction: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Random_number_generation">https://en.wikipedia.org/wiki/Random_number_generation</a><br>Box-Muller algorithm: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform">https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform</a><br>Ziggurat algorithm: <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Ziggurat_algorithm">https://en.wikipedia.org/wiki/Ziggurat_algorithm</a><br>Ziggurat algorithm code: <a target="_blank" rel="noopener" href="https://github.com/jameslao/zignor-python">https://github.com/jameslao/zignor-python</a></p>
-
+<h5 id="Accuracy"><a href="#Accuracy" class="headerlink" title="Accuracy"></a>Accuracy</h5><p>Accuracy indicates that how often the classifier is correct overall, while the misclassification rate is how often the classifier is wrong:<br>$$Accuracy = \frac{TP+TN}{Total},$$<br>$$Misclassification\ rate = \frac{FP+FN}{Total},$$</p>
+<p>where (Total) = (TP+TN+FP+FN) is all the outcomes from classification.</p>
+<h5 id="Precision"><a href="#Precision" class="headerlink" title="Precision"></a>Precision</h5><h5 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h5><h5 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h5><h5 id="Receiver-operating-characteristic-ROC-curve"><a href="#Receiver-operating-characteristic-ROC-curve" class="headerlink" title="Receiver operating characteristic $($ROC$)$ curve"></a>Receiver operating characteristic $($ROC$)$ curve</h5><h5 id="Precision-Recall-curve"><a href="#Precision-Recall-curve" class="headerlink" title="Precision-Recall curve"></a>Precision-Recall curve</h5>
                 
             </div>
             <hr/>
@@ -777,7 +584,7 @@ https://www.doc.ic.ac.uk/~wl/papers/07/csur07dt.pdf
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://zhenchenhong.github.io/2021/08/09/Random-number-generator-with-normal-distribution/">https://zhenchenhong.github.io/2021/08/09/Random-number-generator-with-normal-distribution/</a>
+                    <a href="https://zhenchenhong.github.io/2021/08/10/How-to-evaluate-models/">https://zhenchenhong.github.io/2021/08/10/How-to-evaluate-models/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -815,12 +622,8 @@ https://www.doc.ic.ac.uk/~wl/papers/07/csur07dt.pdf
                     
                         <div class="article-tag">
                             
-                                <a href="/tags/Random-number/">
-                                    <span class="chip bg-color">Random number</span>
-                                </a>
-                            
-                                <a href="/tags/Sampling/">
-                                    <span class="chip bg-color">Sampling</span>
+                                <a href="/tags/Metrics/">
+                                    <span class="chip bg-color">Metrics</span>
                                 </a>
                             
                         </div>
@@ -866,9 +669,10 @@ https://www.doc.ic.ac.uk/~wl/papers/07/csur07dt.pdf
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
+                <i class="far fa-dot-circle"></i>&nbsp;Current
+            </div>
             <div class="card">
                 <a href="/2021/08/10/How-to-evaluate-models/">
                     <div class="card-image">
@@ -885,9 +689,9 @@ https://www.doc.ic.ac.uk/~wl/papers/07/csur07dt.pdf
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2021-08-10
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-10
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -900,6 +704,7 @@ https://www.doc.ic.ac.uk/~wl/papers/07/csur07dt.pdf
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -918,30 +723,30 @@ https://www.doc.ic.ac.uk/~wl/papers/07/csur07dt.pdf
                 Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2021/08/08/What-is-HEAP/">
+                <a href="/2021/08/09/Random-number-generator-with-normal-distribution/">
                     <div class="card-image">
                         
-                        <img src="/images/postFeature/heap-cover.jpg" class="responsive-img" alt="What is HEAP?">
+                        <img src="/images/postFeature/random-number-normal-cover.jpg" class="responsive-img" alt="Random number generator with normal distribution">
                         
-                        <span class="card-title">What is HEAP?</span>
+                        <span class="card-title">Random number generator with normal distribution</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            A specialized tree-based data structure that satisfies the heap property.
+                            Multiple ways to generate normal distributed random numbers.
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-08
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-09
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Algorithm/" class="post-category">
-                                    Algorithm
+                            <a href="/categories/Statistics/" class="post-category">
+                                    Statistics
                                 </a>
                             
                             
@@ -951,12 +756,12 @@ https://www.doc.ic.ac.uk/~wl/papers/07/csur07dt.pdf
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Data-structure/">
-                        <span class="chip bg-color">Data structure</span>
+                    <a href="/tags/Random-number/">
+                        <span class="chip bg-color">Random number</span>
                     </a>
                     
-                    <a href="/tags/Heap/">
-                        <span class="chip bg-color">Heap</span>
+                    <a href="/tags/Sampling/">
+                        <span class="chip bg-color">Sampling</span>
                     </a>
                     
                 </div>
