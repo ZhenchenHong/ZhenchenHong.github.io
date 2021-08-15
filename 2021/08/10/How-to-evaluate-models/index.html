@@ -310,7 +310,7 @@
 <script src="/libs/cryptojs/crypto-js.min.js"></script>
 <script>
     (function() {
-        let pwd = 'c3ea5c2a0cf5e8b0627dfff5f79a702f34d8b5d946d18d0b39ac7ebfdd83caee';
+        let pwd = '';
         if (pwd && pwd.length > 0) {
             if (pwd !== CryptoJS.SHA256(prompt('Please enter the password to view the contents')).toString(CryptoJS.enc.Hex)) {
                 alert('Incorrect password, returning to the home page');
@@ -476,21 +476,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2021-08-10
+                    2021-08-15
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    372
+                    2.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    2 Min
+                    13 Min
                 </div>
                 
 
@@ -513,7 +513,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h3 id="Evaluation-before-Prediction"><a href="#Evaluation-before-Prediction" class="headerlink" title="Evaluation before Prediction"></a>Evaluation before Prediction</h3><p>Evaluating the machine learning models is an essential part of any project. It is not suggested to predict values on unseen data without any performance evaluation. And sometimes, the models may provide satisfying results when evaluate using a metric like accuracy score but could possibly give poor results by logarithmic loss or some other metrics. Then, it is important to know what the basic evaluation metrics are, how they work and when to used them. And there is no one single metric which is appropriate for all the models evaluation. The choice of metric mainly depends on the type of model and the implementation plan of the model.</p>
+                <h2 id="Evaluation-before-Prediction"><a href="#Evaluation-before-Prediction" class="headerlink" title="Evaluation before Prediction"></a>Evaluation before Prediction</h2><p>Evaluating the machine learning models is an essential part of any project. It is not suggested to predict values on unseen data without any performance evaluation. And sometimes, the models may provide satisfying results when evaluate using a metric like accuracy score but could possibly give poor results by logarithmic loss or some other metrics. Then, it is important to know what the basic evaluation metrics are, how they work and when to used them. And there is no one single metric which is appropriate for all the models evaluation. The choice of metric mainly depends on the type of model and the implementation plan of the model.</p>
 <p>The following metrics would be included in this post by the type of the problems:</p>
 <ul>
 <li>Classification problems<ul>
@@ -545,20 +545,73 @@
 </ul>
 </li>
 </ul>
-<h3 id="Classification-problems"><a href="#Classification-problems" class="headerlink" title="Classification problems"></a>Classification problems</h3><p>Classification in machine learning refers to a predictive modeling problem in which a class label is predicted for a given example of input data, which belongs to the supervised problem.</p>
+<h2 id="Classification-problems"><a href="#Classification-problems" class="headerlink" title="Classification problems"></a>Classification problems</h2><p>Classification in machine learning refers to a predictive modeling problem in which a class label is predicted for a given example of input data, which belongs to the supervised problem.</p>
 <img src="classification-feature.jpg" width="500" alt="Classification [source:datamahadev.com]">
 &nbsp;
 
-<h4 id="Confusion-matrix"><a href="#Confusion-matrix" class="headerlink" title="Confusion matrix"></a>Confusion matrix</h4><p>The confusion matrix is a situation analysis table that summarizes the prediction results of the classification model in data science, data analysis, and machine learning. The records in the data set are summarized in the form of a matrix according to the two criteria of the real category and the classification judgment made by the classification model.<br><img src="confusion_matrix.jpg" width="500" alt="Confusion matrix by Admit"><br>&nbsp;</p>
+<h3 id="Confusion-matrix"><a href="#Confusion-matrix" class="headerlink" title="Confusion matrix"></a>Confusion matrix</h3><p>The confusion matrix is a situation analysis table that summarizes the prediction results of the classification model in data science, data analysis, and machine learning. The records in the data set are summarized in the form of a matrix according to the two criteria of the real category and the classification judgment made by the classification model.<br><img src="confusion_matrix.jpg" width="500" alt="Confusion matrix by Admit"><br>&nbsp;</p>
 <ul>
 <li>True Positive $($TP$)$：outcomes where the model correctly predicts the positive class.</li>
 <li>False Positive $($FP$)$：outcomes where the model incorrectly predicts the positive class.</li>
 <li>False Negative $($FN$)$：outcomes where the model incorrectly predicts the negative class</li>
 <li>True Negative $($TN$)$：outcomes where the model correctly predicts the negative class.</li>
 </ul>
-<h5 id="Accuracy"><a href="#Accuracy" class="headerlink" title="Accuracy"></a>Accuracy</h5><p>Accuracy indicates that how often the classifier is correct overall, while the misclassification rate is how often the classifier is wrong:<br>$$Accuracy = \frac{TP+TN}{Total},$$<br>$$Misclassification\ rate = \frac{FP+FN}{Total},$$</p>
+<p>How to memorize these four terms? The first part of True/False indicates whether the prediction is correct or not, and the second part of Positive/Negative shows the prediction results. Based on Confusion matrix, there are several metrics which could show the performance of the classifier.</p>
+<h4 id="Accuracy"><a href="#Accuracy" class="headerlink" title="Accuracy"></a>Accuracy</h4><p>Accuracy indicates that how often the classifier is correct overall, while the mis-classification rate is how often the classifier is wrong:<br>$$Accuracy = \frac{TP+TN}{Total},$$<br>$$Misclassification\ rate = \frac{FP+FN}{Total},$$</p>
 <p>where (Total) = (TP+TN+FP+FN) is all the outcomes from classification.</p>
-<h5 id="Precision"><a href="#Precision" class="headerlink" title="Precision"></a>Precision</h5><h5 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h5><h5 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h5><h5 id="Receiver-operating-characteristic-ROC-curve"><a href="#Receiver-operating-characteristic-ROC-curve" class="headerlink" title="Receiver operating characteristic $($ROC$)$ curve"></a>Receiver operating characteristic $($ROC$)$ curve</h5><h5 id="Precision-Recall-curve"><a href="#Precision-Recall-curve" class="headerlink" title="Precision-Recall curve"></a>Precision-Recall curve</h5>
+<h4 id="Precision"><a href="#Precision" class="headerlink" title="Precision"></a>Precision</h4><p>Precision is easily confused with accuracy. In fact, the precision is only for positive samples with correct predictions rather than all samples with correct predictions. The outcome is to show how many of the positive is really positive:</p>
+<p>$$Precision = \frac{TP}{TP+FP}, $$</p>
+<p>that is, the number of correctly predicted positive cases divided by the total number of predicted positive cases.</p>
+<h4 id="Recall"><a href="#Recall" class="headerlink" title="Recall"></a>Recall</h4><p>Recall is the proportion of actual positive cases which are correctly identified. And it is calculated as the ratio of the correct positive prediction to the total number of positive cases:</p>
+<p>$$Recall = \frac{TP}{TP+FN}, $$</p>
+<p>that is, how many of all actual positive values are predicted to be positive.</p>
+<h4 id="F1-score"><a href="#F1-score" class="headerlink" title="F1 score"></a>F1 score</h4><p>The F1 score is the harmonic average of the precision value and the recall value, which is closer to the smaller one, so when the precision rate and the recall rate are close, the F value is the largest. Many evaluation metrics of <strong>recommendation systems</strong> are based on F1 scores:</p>
+<p>$$F1 \thinspace score = \frac{2}{\frac{1}{precision}+\frac{1}{recall}}. $$</p>
+<p>However, why the F1 score is needed in the machine learning evaluation. Because F1 score is usually more useful than accuracy, especially if the class distribution is uneven for different groups. Let’s check one toy sample: TP = 5, TN = 100, FP = 5, FN = 10, where the proportion of positive/negative cases is unbalanced; Then the (Accuracy) = (\frac{105}{120}) = (\frac{7}{8}), (Precision) = (\frac{5}{10}) = (\frac{1}{2}), (Recall) = (\frac{5}{15}) = (\frac{1}{3}). As displayed, the accuracy is high but would not be the ideal metric for this unbalanced data set and modeling because of low precision and recall by poor data distribution. F1 score for this sample is (\frac{2}{\frac{1}{precision}+\frac{1}{recall}}) = (\frac{2}{2+3}) = (\frac{2}{5}), which takes the both (Precision) and (Recall) into account.</p>
+<h4 id="ROC-curve"><a href="#ROC-curve" class="headerlink" title="ROC curve"></a>ROC curve</h4><p>The receiver operating curve $($ROC curve$)$ is a graphical plot that illustrates the diagnostic ability of a binary classifier system as its discrimination threshold is varied, with the False positive rate on the x-axis and True positive rate on the y-axis:</p>
+<p>$$False \thinspace positive \thinspace rate (FPR) = \frac{FP}{FP+TN}, $$<br>$$True \thinspace positive \thinspace rate (TPR, Recall) = \frac{TP}{TP+FN}, $$</p>
+<img src="ROC-curve.jpg" width="500" alt="ROC curve [source:GeeksforGeeks]">
+&nbsp;
+
+<p>The area below the ROC curve is called the area under curve $($AUC$)$, and the larger AUC, the better performance of the classifier. The AUROC score could also be improved by changing (FPR) and (TPR) in soft classifier, such as Logistic regression, which in turn could be changed by setting different threshold value. For the threshold, if probability of classification label as 1 &gt;= threshold, class = 1; else, probability &lt; threshold, class = 0.</p>
+<h4 id="PR-curve"><a href="#PR-curve" class="headerlink" title="PR curve"></a>PR curve</h4><p>A Precision-Recall curve $($PR curve$)$ is a graph with (Precision) values on the y-axis and (Recall) values on the x-axis. It is expected that the machine learning models have both high precision and high recall. However, most machine learning methods often involve a trade-off between these two metrics. A better PR curve has greater AUC. For example, in the figure below, the classifier with the blue line has better performance than the classifier with the green line.</p>
+<img src="PR-sample.jpg" width="500" alt="PR curve [source:GeeksforGeeks]">
+&nbsp;
+
+<p>Then, why is the PR curve useful when the ROC curve exists? Both curves have (Recall) in the curve space, however, the PR curve gives a more informative picture of an algorithm’s performance when the data sets are highly skewed. And the algorithms that optimize AUROC are not guaranteed to optimize AUC of PR curve. Details could be found <a target="_blank" rel="noopener" href="https://dl.acm.org/doi/10.1145/1143844.1143874">here</a>.</p>
+<h3 id="Logarithmic-loss"><a href="#Logarithmic-loss" class="headerlink" title="Logarithmic loss"></a>Logarithmic loss</h3><p>Logarithmic loss $($Log-loss$)$ indicates how close the prediction probability is to the corresponding (\frac{actual}{true}) value. The less the predicted probability diverges from the actual value, the lower is the Log-loss value:<br>$$(Log-loss_i) = -[y_i ln(p_i) + (1-y_i) ln(1-p_i)], $$</p>
+<h2 id="Clustering-problems"><a href="#Clustering-problems" class="headerlink" title="Clustering problems"></a>Clustering problems</h2><p>Clustering problem involves automatically discovering natural grouping in data. Unlike supervised learning $($like classification$)$, clustering algorithms only interpret the input data and find natural groups or clusters in feature space.</p>
+<img src="clustering-feature.jpg" width="500" alt="Clustering [source:datamahadev.com]">
+&nbsp;
+
+<h3 id="Rand-index"><a href="#Rand-index" class="headerlink" title="Rand index"></a>Rand index</h3><p>The Rand index/measure $($RI$)$ in data clustering is a measurement of the similarity between two data clusterings. From a mathematical aspect, the (RI) is related to the accuracy in the confusion matrix:</p>
+<p>$$RI = \frac{TP+TN}{TP+TN+FP+FN},$$</p>
+<p>here (TP) is how many similar observations are correctly clustered in the same clustering and TN is how many varied observations are correctly separated in the different clusterings. And the denominator is the combinations of all observation pairs, which is (C{}^2_{N}). But RI is also possible to be applied when class labels are not used. A form of the Rand index may be defined that is adjusted for the chance grouping of elements, this is the <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Rand_index#:~:text=The%20adjusted%20Rand%20index%20is,specified%20by%20a%20random%20model.">adjusted Rand index</a>.</p>
+<h3 id="Mutual-Information"><a href="#Mutual-Information" class="headerlink" title="Mutual Information"></a>Mutual Information</h3><p>The <a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Mutual_information">Mutual Information</a> $($MI$)$ is the mutual dependence measurement between two random variables, which quantifies the “amount of information” obtained about one random variable by observing the other variable.</p>
+<h3 id="Dunn-index"><a href="#Dunn-index" class="headerlink" title="Dunn index"></a>Dunn index</h3><p>The Dunn Index, an internal evaluation scheme, is the ratio of the lowest inter-cluster distance $($the distance between centroids$)$ to the highest intra-cluster distance $($the distance between data points inside the same cluster$)$, which is better if higher:</p>
+<p>$$ DI = \mathop{min}\limits_{1\leq i\leq k} {(\mathop{min}\limits_{j \neq k}(\frac{d_{min}(C_i, C_j)}{\mathop{max}\limits_{1\leq i\leq k}d_{in}(C_l)}))} $$</p>
+<h2 id="Regression-problems"><a href="#Regression-problems" class="headerlink" title="Regression problems"></a>Regression problems</h2><p>Regression problem is to estimate the relationships between a dependent variable and one or more independent variables. So it is very different from classification which involves predicting a class label and the error metrics are designed to evaluate the performance of regression models.</p>
+<img src="regression-diff.jpg" width="500" alt="Classification vs. Regression [source:JavaTpoint]">
+&nbsp;
+
+<h3 id="Mean-Squared-Error"><a href="#Mean-Squared-Error" class="headerlink" title="Mean Squared Error"></a>Mean Squared Error</h3><p>The Mean Squared Error $($MSE$)$, also called as L2-norm loss, is the average of the squared difference between the actual and predicted values in the data set, which measures the (variance) of the residuals:</p>
+<p>$$MSE = \frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y_i})^2$$</p>
+<p>Actually, it is summarized from the training process of the regression problem. For example, in the linear regression, according to the training data set, the goal is to minimize (\sum_{i=1}^{N} {(y{}^i_{train} - \hat{y}{}^i_{train})}^2). The effect of the observations number (N) is to eliminate the population influence.</p>
+<h3 id="Root-Mean-Squared-Error"><a href="#Root-Mean-Squared-Error" class="headerlink" title="Root Mean Squared Error"></a>Root Mean Squared Error</h3><p>The Root Mean Squared Error $($RMSE$)$ is the square root of the Mean Squared error which measures the (standard) (deviation) of residuals:</p>
+<p>$$RMSE = \sqrt{MSE} = \sqrt{\frac{1}{N} \sum_{i=1}^{N} (y_i - \hat{y_i})^2}$$</p>
+<p>Same as before, although the (MSE) has already taken the population effect into account, the (MSE) would be sensitive to the squared form of the residuals, which is not proportional to the same base unit. And (RMSE) is introduced to solve this problem.</p>
+<h3 id="Mean-Absolute-Error"><a href="#Mean-Absolute-Error" class="headerlink" title="Mean Absolute Error"></a>Mean Absolute Error</h3><p>The Mean Absolute Error $($MAE$)$, also called as L1-norm loss, represents the mean of the absolute difference between the actual values (y_i) and predicted values (\hat{y_i}) or absolute “residual” values in the data set, which measures the (average) of the residuals:</p>
+<p>$$MAE = \frac{1}{N} \sum_{i=1}^{N} \lvert{y_i - \hat{y_i}}\rvert$$</p>
+<p>The motivation of (MAE) is that (MSE) or (RMSE) always enlarges the residuals and is sensitive to the outliers. Although the (MAE) has the same base unit as (RMSE), the MAE reports the real difference between prediction and actual values and more robust to the outliers.</p>
+<h3 id="The-coefficient-of-determination"><a href="#The-coefficient-of-determination" class="headerlink" title="The coefficient of determination"></a>The coefficient of determination</h3><p>The common problem of the above error-related metrics is that there is no upper and lower limit bounds. For example, when we use AUROC, the upper limit is 1. The closer to 1 represents the better the model and the model with AUC near 0.5 represents almost the same performance as random guessing. The coefficient of determination $($R-squared$)$ is a scale-free score which represents the proportion of the variance for a dependent variable explained by an independent variable or variables in a regression model:</p>
+<p>$$R^2 = 1 - \frac{SS_{residual}}{SS_{total}} = 1 - \frac{\sum_{i=1}^{N} (y_i - \hat{y_i})^2}{\sum_{i=1}^{N} (y_i - \overline{y})^2} = 1 - \frac{MSE(y,\hat{y})}{Var(y)}$$<br>\[<br>  \begin{cases}<br>    SS_{residual}: residual\ sum\ of\ square, built\ model\ “errors” \\\\<br>    SS_{total}: total\ sum\ of\ square, baseline\ “errors”<br>  \end{cases}<br>\]</p>
+<p>In the best case, the predicted values exactly match with the observations, which results in $SS_{residual}$ = 0 and (R^2) = 1. A baseline model, which always predicts as (\overline{y}), will have (R^2) = 0. Models that have worse predictions than this baseline will have a negative (R^2). And in investing, the R-squared could also be interpreted as the percentage of a fund or security’s movements that can be explained by movements in a benchmark index. Details could be found <a target="_blank" rel="noopener" href="https://www.investopedia.com/terms/r/r-squared.asp">here</a>.</p>
+<p>However, there is one obvious drawback of original (R^2) coefficients. The (R^2) coefficients would be applied when the predictors are calculated by ordinary least-squares regression. In this case, (R^2) increases as the number of variables in the model is increased, because if the new variable doesn’t have any good contribution to the accuracy, its weight  would be set as 0. The only thing needed to increase the (R^2) is to add more variables.</p>
+<p>Adjusted R squared is a modified version of R-squared coefficient, which is adjusted for the number of independent variables in the model and penalizes the statistic as extra variables are included in the predictor. And it is always less than or equal to R-squared coefficient:</p>
+<p>$$Adjusted\ {R^2}= 1 - \frac{(1-R^2)(N-1)}{N-k-1},$$</p>
+<p>where N is the number of observations and k is the number of the independent variables explained the data.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Several machine learning metrics have been introduced above, and appropriate measurements need to be selected according to specific issues in practical applications. In the Python’s scikit-learn package, these metrics are very convenient to use. There are more useful metrics in the field, which would be introduced in detailed in the future post.</p>
+
                 
             </div>
             <hr/>
